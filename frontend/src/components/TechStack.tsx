@@ -10,9 +10,11 @@ const technologies: Tech[] = [
   { name: "React", category: "Frontend" },
   { name: "TypeScript", category: "Frontend" },
   { name: "Tailwind CSS", category: "Frontend" },
-  { name: "Python", category: "Backend / AI" },
-  { name: "Computer Vision", category: "Backend / AI" },
-  { name: "TensorFlow", category: "Backend / AI" },
+  { name: "Framer Motion", category: "Frontend" },
+  { name: "FastAPI", category: "Backend" },
+  { name: "Python", category: "Backend" },
+  { name: "OpenCV", category: "Computer Vision" },
+  { name: "Feetech SDK", category: "Robotics" },
 ];
 
 function ScrollHighlightItem({

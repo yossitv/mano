@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import ProblemSection from "./components/ProblemSection";
-import HowItWorks from "./components/HowItWorks";
+
 import ImpactSection from "./components/ImpactSection";
 import TechStack from "./components/TechStack";
 import PartnersSection from "./components/PartnersSection";
@@ -15,7 +15,7 @@ function LandingPage() {
     <>
       <HeroSection />
       <ProblemSection />
-      <HowItWorks />
+
       <ImpactSection />
       <TechStack />
       <PartnersSection />

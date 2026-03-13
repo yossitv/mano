@@ -28,7 +28,12 @@
       "Bash(git push:*)",
       "Bash(find /Users/inartenino/Desktop/Coding/mano/frontend -name tailwind.config.* -o -name vite.config.*)",
       "Bash(pnpm run:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(git commit:*)",
+      "Bash(ls -lh frontend/public/*.mov)",
+      "Bash(git config:*)",
+      "Bash(xargs ls:*)",
+      "Bash(git add:*)"
     ]
   }
 }

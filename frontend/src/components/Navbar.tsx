@@ -1,23 +1,16 @@
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
+import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
-  const [visible, setVisible] = useState(false);
   const [onYellow, setOnYellow] = useState(false);
-  const { scrollY } = useScroll();
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setVisible(latest > 50);
-  });
+  const [inHowItWorks, setInHowItWorks] = useState(false);
 
   useEffect(() => {
     const check = () => {
-      const nav = document.querySelector("nav");
-      if (!nav) return;
-      const navRect = nav.getBoundingClientRect();
-      const navMid = navRect.top + navRect.height / 2;
+      // Use a fixed reference point (where the nav sits: top-4 ≈ 16px + ~28px half-height)
+      const navMid = 30;
 
       const sections = document.querySelectorAll("section");
       let hit = false;
@@ -30,6 +23,12 @@ export default function Navbar() {
         }
       });
       setOnYellow(hit);
+
+      const howSection = document.getElementById("how-it-works");
+      if (howSection) {
+        const rect = howSection.getBoundingClientRect();
+        setInHowItWorks(rect.top <= navMid && navMid <= rect.bottom);
+      }
     };
 
     window.addEventListener("scroll", check, { passive: true });
@@ -43,7 +42,7 @@ export default function Navbar() {
         onYellow ? "bg-primary/20" : "bg-accent/10"
       }`}
       initial={{ opacity: 0, y: -40 }}
-      animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: -40 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       {/* Corner accents */}

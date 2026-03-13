@@ -41,7 +41,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="min-h-screen bg-primary flex items-center justify-center px-6 py-24">
+    <section id="how-it-works" className="min-h-screen bg-primary flex items-center justify-center px-6 py-24">
       <div className="max-w-7xl w-full">
         <motion.p
           className="text-accent/40 text-sm font-light tracking-[0.3em] uppercase mb-4"
@@ -53,16 +53,52 @@ export default function HowItWorks() {
           How It Works
         </motion.p>
 
-        <motion.h2
-          className="text-accent text-4xl md:text-6xl font-bold tracking-tight max-w-3xl"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          Three steps.{" "}
-          <span className="font-serif italic font-normal">Zero</span> effort.
-        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <motion.h2
+            className="text-accent text-4xl md:text-6xl font-bold tracking-tight"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            Three steps.{" "}
+            <span className="font-serif italic font-normal">Zero</span> effort.
+          </motion.h2>
+
+          {/* Video */}
+          <motion.div
+            className="border border-accent/10 relative overflow-hidden"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <span className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-accent/30 z-10" />
+            <span className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-accent/30 z-10" />
+            <span className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-accent/30 z-10" />
+            <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-accent/30 z-10" />
+
+            <div className="aspect-video bg-primary flex flex-col items-center justify-center gap-4">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-20 h-20 text-accent/40"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+
+              <p className="text-accent/20 text-sm font-light tracking-widest uppercase">
+                Sorting demo
+              </p>
+            </div>
+
+            <div className="border-t border-accent/10 px-6 py-3 flex items-center justify-between">
+              <p className="text-accent/40 text-xs font-light tracking-wide">
+                MA-<span className="font-serif italic">NO</span> — Live sorting
+              </p>
+            </div>
+          </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
           {steps.map((step, i) => (

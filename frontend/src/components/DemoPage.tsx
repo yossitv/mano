@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import VideoPlayer from "./VideoPlayer";
+
 
 const materials = [
   {
@@ -29,6 +30,7 @@ const materials = [
       </svg>
     ),
     color: "#3B82F6",
+    video: null,
     description: "Bottles, containers, packaging",
     accuracy: "97.2%",
     speed: "0.8s",
@@ -77,6 +79,7 @@ const materials = [
       </svg>
     ),
     color: "#F59E0B",
+    video: "/paper2.mov",
     description: "Newspapers, cardboard, sheets, packaging",
     accuracy: "98.5%",
     speed: "0.6s",
@@ -131,6 +134,7 @@ const materials = [
       </svg>
     ),
     color: "#EF4444",
+    video: "/can.mov",
     description: "Aluminum, steel, tin cans",
     accuracy: "99.1%",
     speed: "0.5s",
@@ -160,31 +164,8 @@ export default function DemoPage() {
   return (
     <section className="min-h-screen bg-primary pt-28 pb-20 px-6">
       <div className="max-w-6xl mx-auto">
-        {/* Back link */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-accent/50 hover:text-accent text-sm font-light tracking-wide transition-colors"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="w-4 h-4"
-            >
-              <path d="M19 12H5M12 19l-7-7 7-7" />
-            </svg>
-            Back to home
-          </Link>
-        </motion.div>
-
         {/* Title + Video side by side */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-8 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <motion.h1
               className="text-accent text-5xl md:text-7xl font-bold tracking-tighter"
@@ -220,40 +201,51 @@ export default function DemoPage() {
             <span className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-accent/30 z-10" />
             <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-accent/30 z-10" />
 
-            <div className="aspect-video bg-primary flex flex-col items-center justify-center gap-4">
-              <motion.div
-                className="w-16 h-16 rounded-full border-2 border-accent/20 flex items-center justify-center"
-                animate={{ scale: [1, 1.08, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-6 h-6 text-accent/30 ml-1"
-                >
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </motion.div>
+            {current.video ? (
+              <VideoPlayer
+                src={current.video}
+                label={current.label}
+                accuracy={current.accuracy}
+                speed={current.speed}
+              />
+            ) : (
+              <>
+                <div className="aspect-video bg-primary flex flex-col items-center justify-center gap-4">
+                  <motion.div
+                    className="w-16 h-16 rounded-full border-2 border-accent/20 flex items-center justify-center"
+                    animate={{ scale: [1, 1.08, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-6 h-6 text-accent/30 ml-1"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </motion.div>
 
-              <p className="text-accent/20 text-sm font-light tracking-widest uppercase">
-                {current.label} sorting demo
-              </p>
-            </div>
+                  <p className="text-accent/20 text-sm font-light tracking-widest uppercase">
+                    {current.label} sorting demo
+                  </p>
+                </div>
 
-            <div className="border-t border-accent/10 px-6 py-3 flex items-center justify-between">
-              <p className="text-accent/40 text-xs font-light tracking-wide">
-                MA-<span className="font-serif italic">NO</span> — {current.label} sorting
-              </p>
-              <div className="flex items-center gap-3">
-                <span className="text-accent/20 text-xs font-light">
-                  {current.accuracy} accuracy
-                </span>
-                <span className="w-px h-3 bg-accent/10" />
-                <span className="text-accent/20 text-xs font-light">
-                  {current.speed} per item
-                </span>
-              </div>
-            </div>
+                <div className="border-t border-accent/10 px-6 py-3 flex items-center justify-between">
+                  <p className="text-accent/40 text-xs font-light tracking-wide">
+                    MA-<span className="font-serif italic">NO</span> — {current.label} sorting
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <span className="text-accent/20 text-xs font-light">
+                      {current.accuracy} accuracy
+                    </span>
+                    <span className="w-px h-3 bg-accent/10" />
+                    <span className="text-accent/20 text-xs font-light">
+                      {current.speed} per item
+                    </span>
+                  </div>
+                </div>
+              </>
+            )}
           </motion.div>
         </div>
 

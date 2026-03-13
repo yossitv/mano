@@ -8,6 +8,7 @@ import TechStack from "./components/TechStack";
 import PartnersSection from "./components/PartnersSection";
 import Footer from "./components/Footer";
 import DemoPage from "./components/DemoPage";
+import LiveDemoPage from "./components/LiveDemoPage";
 
 function LandingPage() {
   return (
@@ -30,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/demo" element={<DemoPage />} />
+        <Route path="/demo/:scenarioId" element={<LiveDemoPage />} />
       </Routes>
     </div>
   );

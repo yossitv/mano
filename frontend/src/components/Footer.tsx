@@ -1,6 +1,9 @@
 import { motion } from "motion/react";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
+  const navigate = useNavigate();
+
   return (
     <footer className="bg-primary border-t border-accent/10 px-6 py-16">
       <div className="max-w-7xl mx-auto">
@@ -20,14 +23,14 @@ export default function Footer() {
             Stop sorting. Start living.
           </p>
 
-          <motion.a
-            href="#"
-            className="mt-8 inline-block border-2 border-accent bg-accent text-primary px-8 py-3 font-bold text-sm tracking-wide hover:bg-accent/90 transition-colors"
+          <motion.button
+            onClick={() => navigate("/demo")}
+            className="mt-8 inline-block border-2 border-accent bg-accent text-primary px-8 py-3 font-bold text-sm tracking-wide hover:bg-accent/90 transition-colors cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >
-            Get Early Access
-          </motion.a>
+            Watch the Demo
+          </motion.button>
         </motion.div>
 
         <div className="mt-16 pt-8 border-t border-accent/10 flex flex-col md:flex-row items-center justify-between gap-4">

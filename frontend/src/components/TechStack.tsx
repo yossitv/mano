@@ -1,6 +1,12 @@
 import { motion } from "motion/react";
+import { useState } from "react";
 
-const technologies = [
+interface Tech {
+  name: string;
+  category: string;
+}
+
+const technologies: Tech[] = [
   { name: "React", category: "Frontend" },
   { name: "TypeScript", category: "Frontend" },
   { name: "Tailwind CSS", category: "Frontend" },
@@ -9,66 +15,87 @@ const technologies = [
   { name: "TensorFlow", category: "Backend / AI" },
 ];
 
-export default function TechStack() {
+function ScrollHighlightItem({
+  tech,
+  index,
+  isHighlighted,
+  onHighlight,
+}: {
+  tech: Tech;
+  index: number;
+  isHighlighted: boolean;
+  onHighlight: (index: number) => void;
+}) {
   return (
-    <section className="min-h-[60vh] bg-primary flex items-center justify-center px-6 py-24">
-      <div className="max-w-7xl w-full">
-        <motion.p
-          className="text-accent/40 text-sm font-light tracking-[0.3em] uppercase mb-4"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
-          Built With
-        </motion.p>
+    <motion.li
+      className="will-change-[opacity] font-bold m-0 p-0 leading-[0.9] uppercase whitespace-nowrap text-accent"
+      style={{ fontSize: "clamp(2rem, 8vw, 6rem)" }}
+      initial={false}
+      animate={{
+        opacity: isHighlighted ? 1 : 0.3,
+        scale: isHighlighted ? 1.02 : 1,
+      }}
+      transition={{
+        duration: 0.1,
+        ease: "linear",
+      }}
+      onViewportEnter={() => onHighlight(index)}
+      viewport={{
+        margin: "-28% 0px -68% 0px",
+        amount: "some",
+      }}
+    >
+      {tech.name}
+    </motion.li>
+  );
+}
 
-        <motion.h2
-          className="text-accent text-4xl md:text-6xl font-bold tracking-tight max-w-3xl"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          The tech behind the{" "}
-          <span className="font-serif italic font-normal">hand</span>.
-        </motion.h2>
+export default function TechStack() {
+  const [activeTech, setActiveTech] = useState<number | null>(null);
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-16">
-          {technologies.map((tech, i) => (
-            <motion.div
-              key={tech.name}
-              className="relative group p-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: 0.08 * i }}
-            >
-              <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
-              <span className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
-              <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
-              <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
-
-              <p className="text-accent text-lg font-bold">{tech.name}</p>
-              <p className="text-accent/40 text-xs font-light mt-1 tracking-wide">
-                {tech.category}
-              </p>
-            </motion.div>
-          ))}
+  return (
+    <section className="bg-primary px-6 pt-24 pb-8">
+      <div className="max-w-7xl w-full mx-auto flex gap-8 items-start">
+        {/* Sticky sidebar title */}
+        <div className="sticky top-24 flex-shrink-0 hidden md:block">
+          <p className="text-accent/40 text-sm font-light tracking-[0.3em] uppercase mb-4">
+            Built With
+          </p>
+          <h2 className="text-accent text-4xl md:text-6xl font-bold tracking-tight">
+            The tech
+            <br />
+            behind the{" "}
+            <span className="font-serif italic font-normal">hand</span>.
+          </h2>
         </div>
 
-        <motion.div
-          className="mt-16 pt-8 border-t border-accent/10 flex items-center gap-3"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <p className="text-accent/30 text-sm font-light">
-            Powered by <span className="text-accent/60 font-normal">Cyberwave</span>
-          </p>
-        </motion.div>
+        {/* Scrolling tech list */}
+        <div className="flex-1">
+          {/* Mobile-only title */}
+          <div className="md:hidden mb-12">
+            <p className="text-accent/40 text-sm font-light tracking-[0.3em] uppercase mb-4">
+              Built With
+            </p>
+            <h2 className="text-accent text-4xl font-bold tracking-tight">
+              The tech behind the{" "}
+              <span className="font-serif italic font-normal">hand</span>.
+            </h2>
+          </div>
+
+          <ul className="list-none p-0 m-0 flex flex-col gap-5 pt-[20vh] pb-[10vh]">
+            {technologies.map((tech, index) => (
+              <ScrollHighlightItem
+                key={tech.name}
+                tech={tech}
+                index={index}
+                isHighlighted={activeTech === index}
+                onHighlight={() => setActiveTech(index)}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
+
     </section>
   );
 }

@@ -22,7 +22,12 @@
       "WebFetch(domain:www.recyclecoach.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:catalog.data.gov)",
-      "WebFetch(domain:iwaste.epa.gov)"
+      "WebFetch(domain:iwaste.epa.gov)",
+      "Bash(git pull:*)",
+      "Bash(git stash:*)",
+      "Bash(git push:*)",
+      "Bash(find /Users/inartenino/Desktop/Coding/mano/frontend -name tailwind.config.* -o -name vite.config.*)",
+      "Bash(pnpm run:*)"
     ]
   }
 }

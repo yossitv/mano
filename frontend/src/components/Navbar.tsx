@@ -1,7 +1,9 @@
 import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   const [onYellow, setOnYellow] = useState(false);
   const { scrollY } = useScroll();
@@ -50,7 +52,7 @@ export default function Navbar() {
       <span className={`absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 transition-colors duration-300 ${onYellow ? "border-primary/40" : "border-accent/40"}`} />
       <span className={`absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 transition-colors duration-300 ${onYellow ? "border-primary/40" : "border-accent/40"}`} />
 
-      <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+      <a href="#" onClick={(e) => { e.preventDefault(); navigate("/"); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
         <img
           src="/robothand_101074.svg"
           alt="MA-NO logo"

@@ -5,7 +5,9 @@
       "Bash(pnpm create:*)",
       "Bash(pnpm install:*)",
       "Bash(pnpm build:*)",
-      "Bash(/Users/inartenino/Desktop/Coding/mano/frontend/README.md:*)"
+      "Bash(/Users/inartenino/Desktop/Coding/mano/frontend/README.md:*)",
+      "Bash(npx tsc:*)",
+      "Bash(pnpm dev:*)"
     ]
   }
 }

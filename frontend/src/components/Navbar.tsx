@@ -50,11 +50,13 @@ export default function Navbar() {
       <span className={`absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 transition-colors duration-300 ${onYellow ? "border-primary/40" : "border-accent/40"}`} />
       <span className={`absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 transition-colors duration-300 ${onYellow ? "border-primary/40" : "border-accent/40"}`} />
 
-      <img
-        src="/robothand_101074.svg"
-        alt="MA-NO logo"
-        className={`w-14 h-14 -my-2 -mx-2 transition-all duration-300 ${onYellow ? "brightness-0" : ""}`}
-      />
+      <a href="#" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+        <img
+          src="/robothand_101074.svg"
+          alt="MA-NO logo"
+          className={`w-14 h-14 -my-2 -mx-2 transition-all duration-300 cursor-pointer ${onYellow ? "brightness-0" : ""}`}
+        />
+      </a>
 
       <div className="flex items-center gap-6">
         <a href="#" className={`text-sm font-light tracking-wide transition-colors ${onYellow ? "text-primary/70 hover:text-primary" : "text-accent/70 hover:text-accent"}`}>

@@ -68,12 +68,17 @@ export default function HowItWorks() {
           {steps.map((step, i) => (
             <motion.div
               key={step.number}
-              className="relative border border-accent/10 rounded-2xl p-8 group hover:border-accent/30 transition-colors"
+              className="relative p-8 group"
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.15 * i, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
+              <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+              <span className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+              <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+              <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+
               <span className="text-accent/20 text-7xl font-bold absolute top-4 right-6 select-none">
                 {step.number}
               </span>

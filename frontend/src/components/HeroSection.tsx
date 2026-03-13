@@ -37,6 +37,39 @@ export default function HeroSection() {
             Sorting is a thing of the past.
           </motion.h3>
 
+          <motion.a
+            href="#demo"
+            className="mt-10 relative inline-flex items-center gap-3 border-2 border-accent bg-accent text-primary px-10 py-4 font-bold text-lg tracking-wide overflow-hidden group"
+            initial={{ opacity: 0, y: 30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            whileHover={{
+              scale: 1.08,
+              boxShadow: "0 0 40px rgba(255,255,0,0.4), 0 0 80px rgba(255,255,0,0.15)",
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.span
+              className="absolute inset-0 bg-primary/10"
+              initial={{ x: "-100%" }}
+              whileHover={{ x: "100%" }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+            />
+            <span className="relative z-10">Request a Demo</span>
+            <motion.svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              className="w-5 h-5 relative z-10"
+              animate={{ x: [0, 6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            >
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </motion.svg>
+          </motion.a>
+
         </div>
 
         <div className="relative hidden md:block">

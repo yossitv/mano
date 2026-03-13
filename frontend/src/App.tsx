@@ -4,6 +4,7 @@ import ProblemSection from "./components/ProblemSection";
 import HowItWorks from "./components/HowItWorks";
 import ImpactSection from "./components/ImpactSection";
 import TechStack from "./components/TechStack";
+import PartnersSection from "./components/PartnersSection";
 import Footer from "./components/Footer";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <HowItWorks />
       <ImpactSection />
       <TechStack />
+      <PartnersSection />
       <Footer />
     </div>
   );

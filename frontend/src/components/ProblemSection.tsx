@@ -47,12 +47,17 @@ export default function ProblemSection() {
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="border border-accent/10 rounded-2xl p-8"
+              className="relative group p-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.1 * i }}
             >
+              <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+              <span className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+              <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+              <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+
               <p className="text-accent text-5xl md:text-6xl font-bold tracking-tight">
                 {stat.value}
               </p>

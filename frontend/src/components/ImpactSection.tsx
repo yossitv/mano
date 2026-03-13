@@ -67,11 +67,17 @@ export default function ImpactSection() {
           {metrics.map((metric, i) => (
             <motion.div
               key={metric.label}
+              className="relative group p-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.1 * i }}
             >
+              <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-primary/30 group-hover:border-primary/60 transition-colors" />
+              <span className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-primary/30 group-hover:border-primary/60 transition-colors" />
+              <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-primary/30 group-hover:border-primary/60 transition-colors" />
+              <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-primary/30 group-hover:border-primary/60 transition-colors" />
+
               <p className="text-primary text-5xl md:text-7xl font-bold tracking-tight">
                 {metric.display ? (
                   metric.display

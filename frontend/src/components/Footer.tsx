@@ -22,7 +22,7 @@ export default function Footer() {
 
           <motion.a
             href="#"
-            className="mt-8 inline-block bg-accent text-primary px-8 py-3 rounded-full font-bold text-sm tracking-wide hover:bg-accent/90 transition-colors"
+            className="mt-8 inline-block border-2 border-accent bg-accent text-primary px-8 py-3 font-bold text-sm tracking-wide hover:bg-accent/90 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
           >

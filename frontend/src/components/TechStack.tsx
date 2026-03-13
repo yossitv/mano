@@ -38,12 +38,17 @@ export default function TechStack() {
           {technologies.map((tech, i) => (
             <motion.div
               key={tech.name}
-              className="border border-accent/10 rounded-2xl p-6 hover:border-accent/30 transition-colors"
+              className="relative group p-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: 0.08 * i }}
             >
+              <span className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+              <span className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+              <span className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+              <span className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-accent/30 group-hover:border-accent/60 transition-colors" />
+
               <p className="text-accent text-lg font-bold">{tech.name}</p>
               <p className="text-accent/40 text-xs font-light mt-1 tracking-wide">
                 {tech.category}

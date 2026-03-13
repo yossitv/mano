@@ -7,7 +7,14 @@
       "Bash(pnpm build:*)",
       "Bash(/Users/inartenino/Desktop/Coding/mano/frontend/README.md:*)",
       "Bash(npx tsc:*)",
-      "Bash(pnpm dev:*)"
+      "Bash(pnpm dev:*)",
+      "Bash(ls /Users/inartenino/Desktop/Coding/mano/apps/*/package.json)",
+      "Bash(xargs cat:*)",
+      "WebFetch(domain:www.fab.com)",
+      "WebSearch",
+      "WebFetch(domain:sketchfab.com)",
+      "WebFetch(domain:creazilla.com)",
+      "Bash(pnpm remove:*)"
     ]
   }
 }

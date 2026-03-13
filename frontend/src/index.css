@@ -4,10 +4,13 @@
   --color-primary: #004736;
   --color-accent: #FFFF00;
   --font-sans: "Space Grotesk", sans-serif;
+  --font-serif: "Instrument Serif", serif;
 }
 
 html, body, #root {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: var(--color-primary);
+  overscroll-behavior: none;
 }
